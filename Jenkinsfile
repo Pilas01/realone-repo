@@ -6,7 +6,7 @@ pipeline {
     stages {
         stage('Git checkout') {
             steps {
-                git 'https://github.com/tkibnyusuf/realone-repo.git'
+                git 'https://github.com/Pilas01/realone-repo.git'
             }
         }
         
@@ -26,12 +26,12 @@ pipeline {
         stage("docker build & docker push"){
             steps{
                 script{
-                    withCredentials([string(credentialsId: 'docker-password', variable: 'docker_pass')]) {
+                    withCredentials([string(credentialsId: 'docker-password', variable: 'docker-password')]) {
                              sh '''
-                                docker build -t 44.202.93.29:8083/springapp:${VERSION} .
-                                docker login -u admin -p $docker_pass 44.202.93.29:8083
-                                docker push  44.202.93.29:8083/springapp:${VERSION}
-                                docker rmi 44.202.93.29:8083/springapp:${VERSION}
+                                docker build -t 34.239.150.174:8083/springapp:${VERSION} .
+                                docker login -u admin -p $docker_pass 34.239.150.174:8083
+                                docker push  34.239.150.174:8083/springapp:${VERSION}
+                                docker rmi 34.239.150.174:8083/springapp:${VERSION}
                                  
                             '''
                        }
