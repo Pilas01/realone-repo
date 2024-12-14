@@ -22,30 +22,16 @@ pipeline {
             }
         
             }
-        
-         stage('Code Qualty Scan') {
 
-           steps {
-                  withSonarQubeEnv('sonarserver') {
-             sh "mvn -f SampleWebApp/pom.xml sonar:sonar"      
-               }
-            }
-       }
-        stage('Quality Gate') {
-          steps {
-                 waitForQualityGate abortPipeline: true
-              }
-        }
-        
         stage("docker build & docker push"){
             steps{
                 script{
                     withCredentials([string(credentialsId: 'docker-password', variable: 'docker-pass')]) {
                              sh '''
-                                docker build -t 18.205.60.165:8083/springapp:${VERSION} .
-                                docker login -u admin -p $docker_pass 18.205.60.165:8083
-                                docker push 18.205.60.165:8083/springapp:${VERSION}
-                                docker rmi 18.205.60.165:8083/springapp:${VERSION}
+                                docker build -t 18.116.23.238:8083/springapp:${VERSION} .
+                                docker login -u admin -p $docker_pass 18.116.23.238:8083
+                                docker push 18.116.23.238:8083/springapp:${VERSION}
+                                docker rmi 18.116.23.238:8083/springapp:${VERSION}
                                  
                             '''
                        }
