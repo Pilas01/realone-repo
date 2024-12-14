@@ -16,7 +16,8 @@ spec:
     spec:
       containers:
       - name: tomcat-container
-        image: 18.116.23.238:8083/springapp:${VERSION}
+        #image: 18.116.23.238:8083/springapp:${VERSION}
+        image: 18.116.23.238:8083/springapp:13
         ports:
         - containerPort: 80
 
